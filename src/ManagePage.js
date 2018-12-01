@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="Notstyled.css">
-        <title>notflix.com</title>
-    </head>
-<body>
-    <script>
-        const Remove = function(){
-            console.log ('remove show')}
-        
+import React, { Component } from 'react';
 
-        const explore = function (){ 
-    <section>
+class ManagePage extends Component; {
+    render = () => {
+        return (
+            <div>
+                <section>
             <h1>Notflix.com</h1>
         <div>
             <header>
@@ -69,9 +62,8 @@
             </form>
         </nav>
     </section>
-</body>
-</html>
-}
-}
-
+            </div>
+        )
+    }
+    }
 export default ManagePage
