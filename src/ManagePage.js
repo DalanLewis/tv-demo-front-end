@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'app.js';
 
 class ManagePage extends Component; {
     render = () => {
         return (
             <div>
-                <section>
             <h1>Notflix.com</h1>
         <div>
             <header>
-                    <!--Subtabs at the top of page-->
             <div class="image">
                 <img src="not_images/manageul.jpg">
             </div>
@@ -17,10 +15,7 @@ class ManagePage extends Component; {
             </div>     
             </header>
         </div>
-    </section>
-    <section>
         <article>
-            <!--Left oriented List of shows-->
             <aside>
             <nav>
                 <ul>
@@ -50,8 +45,6 @@ class ManagePage extends Component; {
             </aside>
             </nav>
         </article>
-    </section>
-    <section>
         <nav>
             <form>
                 <h3>New/Edit show</h3>
@@ -61,9 +54,8 @@ class ManagePage extends Component; {
                 <a><button id="submit">Create/Update</button></a>
             </form>
         </nav>
-    </section>
             </div>
         )
     }
-    }
+}    
 export default ManagePage
