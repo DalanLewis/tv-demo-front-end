@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './Notstyled.css';
 import ManagePage from './ManagePage'
+import PreviewPage from './PreviewPage'
+
+
 
 class App extends Component {
-  render() {
+  render = () => {
     return (
-      <div className="App">
-        <header className="App-header">
-          <ManagePage>
-    );
+        <link to="./PreviewPage"></link>
+    )
   }
 }
-
-export default app;
+export default App;

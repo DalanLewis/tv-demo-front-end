@@ -1,21 +1,21 @@
-import React, { Component } from 'app.js';
+import React, { Component } from 'react';
 
-class ManagePage extends Component; {
+class ManagePage extends Component {
     render = () => {
         return (
             <div>
-            <h1>Notflix.com</h1>
-        <div>
-            <header>
-            <div class="image">
-                <img src="not_images/manageul.jpg">
-            </div>
-            <div class="image">
-                <a href="file:///Users/dalanlewis/projects/tv-demo-front-end/Notflixpreview.html"><img src="not_images/preview.jpg"></a>
-            </div>     
-            </header>
-        </div>
-        <article>
+                <section>
+                    <h1>Notflix.com</h1>
+                    <header>
+                        <div className="image">
+                            <img src="not_images/manage.jpg"/>
+                        </div>
+                        <div class="image">
+                            <img src="not_images/previewul.jpg"/>
+                        </div>
+                    </header>
+                </section>
+                <article>
             <aside>
             <nav>
                 <ul>
@@ -42,20 +42,11 @@ class ManagePage extends Component; {
                     That 70's Show <button onclick="Remove()">-</button>
                     </li>
                 </ul>
-            </aside>
             </nav>
+            </aside>
         </article>
-        <nav>
-            <form>
-                <h3>New/Edit show</h3>
-                <a> Name: <input size= "20" type="text"></a><br>
-                <a>Rating: <input size= "20" type="text"></a><br>
-                <a>Img url: <input size= "20" type="text"></a><br>
-                <a><button id="submit">Create/Update</button></a>
-            </form>
-        </nav>
             </div>
-        )
+            )
     }
-}    
+}
 export default ManagePage
