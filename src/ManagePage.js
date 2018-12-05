@@ -1,11 +1,28 @@
 import React, { Component, Fragment } from 'react'
-import {SiteNav} from './SiteNav'
+import { SiteNav } from './SiteNav'
+import TVshow from './TVshow'
 
 
 class ManagePage extends Component {
 
-//    const remove = function(){
-//       console.log ('remove show')}
+    tvShowSelected = () => {
+        return (
+            console.log("Tv Show Selected")
+        )
+    }
+
+    tvShowDeleted = () => {
+        return (
+            console.log("Tv Show Deleted")
+        )
+    }
+    
+    saveTvShow = (e) => {
+        e.preventDefault()
+        return (
+            console.log("saveTvShow")
+        )
+    }
 
     render = () => {
         return (
@@ -13,16 +30,17 @@ class ManagePage extends Component {
                 <section>
                     <h1>Notflix.com</h1>
                     <header>
-                        <SiteNav/>
+                        <SiteNav />
                     </header>
                 </section>
                 <article>
                     <aside>
                         <nav>
-                            <ul>
-                                <h2>Shows</h2>
+                            <h2>Shows</h2>
+                            <TVshow allowDelete={true} deleteHandler={this.tvShowDeleted} selectHandler={this.tvShowSelected} />
+                            {/* <ul>
                                 <li>
-                                    Game of Thrones <button onclick="Remove()">-</button>
+                                    Game of Thrones allowDelete={true}/>
                                 </li>
                                 <li>
                                     Breaking Bad <button onclick="Remove()">-</button>
@@ -42,7 +60,7 @@ class ManagePage extends Component {
                                 <li>
                                     That 70's Show <button onclick="Remove()">-</button>
                                 </li>
-                            </ul>
+                            </ul> */}
                         </nav>
                     </aside>
                     <form>
@@ -50,7 +68,7 @@ class ManagePage extends Component {
                         <a> Name: <input size="20" type="text" /></a>
                         <a>Rating: <input size="20" type="text" /></a>
                         <a>Img url: <input size="20" type="text" /></a>
-                        <a><button id="submit">Create/Update</button></a>
+                        <a><button onClick={this.saveTvShow}></button></a>
                     </form>
                 </article>
             </Fragment>

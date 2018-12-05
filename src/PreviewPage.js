@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {SiteNav1} from './SiteNav'
+import TVshow from './TVshow'
+
 
 
 class PreviewPage extends Component {
@@ -14,13 +16,15 @@ class PreviewPage extends Component {
                 </section>
             <aside>
                 <nav>
-                    <ul>
                         <h2>Shows</h2>
+                        <TVshow/>
+                        {/* 
+                        <ul>
                         <li>
-                            Game of Thrones
+                            Game of Thrones <TVshow/>
                     </li>
                         <li>
-                            Breaking Bad
+                            Breaking Bad 
                     </li>
                         <li>
                             Stranger Things
@@ -37,7 +41,7 @@ class PreviewPage extends Component {
                         <li>
                             That 70's Show
                     </li>
-                    </ul>
+                    </ul> */}
                 </nav>
             </aside>
                 <article>
