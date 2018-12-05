@@ -91,5 +91,5 @@ picture {
     border-style: solid;
     border-width: thick;
     border-color:black;
-    height: 800px;
+    float: right;
 }

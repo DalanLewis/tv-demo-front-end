@@ -1,63 +1,56 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react'
+import {SiteNav1} from './SiteNav'
+
 
 class PreviewPage extends Component {
     render = () => {
         return (
-            <div>
+            <Fragment>
                 <section>
                     <h1>Notflix.com</h1>
                     <header>
-                        <div className="image">
-                            <img src="not_images/manage.jpg"/>
-                        </div>
-                        <div class="image">
-                            <img src="not_images/previewul.jpg"/>
-                        </div>
+                        <SiteNav1/>
                     </header>
                 </section>
-            <section>
-                <article>
-                    <aside>
-                        <nav>
-                            <ul>
-                                <h2>Shows</h2>
-                                <li>
-                                    Game of Thrones
+            <aside>
+                <nav>
+                    <ul>
+                        <h2>Shows</h2>
+                        <li>
+                            Game of Thrones
                     </li>
-                                <li>
-                                    Breaking Bad
+                        <li>
+                            Breaking Bad
                     </li>
-                                <li>
-                                    Stranger Things
+                        <li>
+                            Stranger Things
                     </li>
-                                <li>
-                                    Rick and Morty
+                        <li>
+                            Rick and Morty
                     </li>
-                                <li>
-                                    Southpark
+                        <li>
+                            Southpark
                     </li>
-                                <li>
-                                    Friends
+                        <li>
+                            Friends
                     </li>
-                                <li>
-                                    That 70's Show
+                        <li>
+                            That 70's Show
                     </li>
-                            </ul>
-                        </nav>
-                    </aside>
-                </article>
+                    </ul>
+                </nav>
+            </aside>
                 <article>
                     <div>
                         <span>
                             <b><u>Game of Thrones</u> <u>Rating: 9.5/10</u></b>
                         </span>
+            <picture>
+                <img src="./GOT.jpg"/>
+            </picture>
                     </div>
-                    <picture>
-                        <img src="not_images/GOT.jpg" style="float:right;width:-500px;height:500px;" />
-                    </picture>
                 </article>
-            </section>
-            </div>
+            </Fragment>
         )
     }
 }
