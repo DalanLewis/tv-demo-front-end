@@ -50,7 +50,7 @@ class PreviewPage extends Component {
                             <b><u>Game of Thrones</u> <u>Rating: 9.5/10</u></b>
                         </span>
             <picture>
-                <img src="./GOT.jpg"/>
+                <img src="./GOT.jpg" alt="Game of Thrones"/>
             </picture>
                     </div>
                 </article>
