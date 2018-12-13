@@ -104,7 +104,7 @@ class ManagePage extends Component {
                         <a> Name: <input onChange={this.nameInProgress} size="20" type="text" value={this.state.nameInProgress} /></a>
                         <a>Rating: <input onChange={this.ratingInProgress} size="20" type="text" value={this.state.ratingInProgress} /></a>
                         <a>Img url: <input onChange={this.imageInProgress} size="20" type="text" value={this.state.imageInProgress} /></a>
-                        <a><button onClick={this.saveTvShow}></button></a>
+                        <a><button onClick={this.saveTvShow}>Save</button></a>
                     </form>
                 </article>
             </Fragment>
