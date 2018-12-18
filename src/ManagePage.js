@@ -1,20 +1,24 @@
 import React, { Component, Fragment } from 'react'
 import { SiteNav } from './SiteNav'
 import TVshow from './TVshow'
+import { PropTypes } from 'prop-types'
 
 
 class ManagePage extends Component {
 
-    state = {
-        nameInProgress: '',
-        ratingInProgress: '',
-        imageInProgress: '',
-        show: {
-            name: '',
-            rating: '',
-            image: '',
-        }
+    static propTypes = {
+        show: PropTypes.object.isRequired,
+        tvShowDeleted: PropTypes.func.isRequired,
+        saveTvShow: PropTypes.func.isRequired,
+
     }
+
+    state = {
+        nameInProgress: 'Game of Thrones',
+        ratingInProgress: '10/10',
+        imageInProgress: 'https://www.hbo.com/content/dam/hbodata/series/game-of-thrones/episodes/1/game-of-thrones-1-1920x1080.jpg/_jcr_content/renditions/cq5dam.web.1200.675.jpeg',
+    }
+
 
     nameInProgress = (e) => {
 
@@ -31,50 +35,43 @@ class ManagePage extends Component {
     }
 
     renderShows = () => {
-        return (
-            <ul>
-                <li onClick={this.tvShowSelected}> Name: {this.state.show.name} </li>
-                <li onClick={this.tvShowSelected}> Rating: {this.state.show.rating} </li>
-                <li onClick={this.tvShowSelected}> Image: {this.state.show.image} </li>
-                <button onClick={this.tvShowDeleted}>Delete</button>
-            </ul>
-        )
+        if (this.props.show.name) {
+            return (
+                    <TVshow allowDelete={true} deleteHandler={this.tvShowDeleted} selectHandler={this.tvShowSelected} name={this.props.show.name} />
+            )
 
-
+        }
     }
 
     tvShowSelected = () => {
         return (
-            this.setState ({nameInProgress: this.state.show.name,
-                            ratingInProgress: this.state.show.rating,
-                            imageInProgress: this.state.show.image})
+            this.setState({
+                nameInProgress: this.props.show.name,
+                ratingInProgress: this.props.show.rating,
+                imageInProgress: this.props.show.image
+            })
         )
     }
 
     tvShowDeleted = () => {
         return (
-            this.setState({
-                show: {
-                    name: '',
-                    rating: '',
-                    image: ''
-                }
-            })
+            this.props.tvShowDeleted()
         )
     }
 
     saveTvShow = (e) => {
         e.preventDefault()
+        this.props.saveTvShow(
+            {
+                name: this.state.nameInProgress,
+                rating: this.state.ratingInProgress,
+                image: this.state.imageInProgress
+            })
 
         this.setState({
             nameInProgress: '',
             ratingInProgress: '',
             imageInProgress: '',
-            show: {
-                name: this.state.nameInProgress,
-                rating: this.state.ratingInProgress,
-                image: this.state.imageInProgress
-            }
         })
     }
 
@@ -91,20 +88,15 @@ class ManagePage extends Component {
                     <aside>
                         <nav>
                             <h2>Shows</h2>
-                            {this.renderShows()}
-                            {/* <TVshow allowDelete={true} deleteHandler={this.tvShowDeleted} selectHandler={this.tvShowSelected} /> */}
-                            <ul>
-
-
-                            </ul>
+                            <ul> {this.renderShows()} </ul>
                         </nav>
                     </aside>
                     <form>
                         <h3>New/Edit show</h3>
-                        <a> Name: <input onChange={this.nameInProgress} size="20" type="text" value={this.state.nameInProgress} /></a>
-                        <a>Rating: <input onChange={this.ratingInProgress} size="20" type="text" value={this.state.ratingInProgress} /></a>
-                        <a>Img url: <input onChange={this.imageInProgress} size="20" type="text" value={this.state.imageInProgress} /></a>
-                        <a><button onClick={this.saveTvShow}>Save</button></a>
+                        <span className='form'> Name: <input onChange={this.nameInProgress} size="20" type="text" value={this.state.nameInProgress} /></span >
+                        <span className='form'>Rating: <input onChange={this.ratingInProgress} size="20" type="text" value={this.state.ratingInProgress} /></span >
+                        <span className='form'>Img url: <input onChange={this.imageInProgress} size="20" type="text" value={this.state.imageInProgress} /></span >
+                        <span className='form'><button type="button" onClick={this.saveTvShow}>Save</button></span >
                     </form>
                 </article>
             </Fragment>

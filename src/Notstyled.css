@@ -60,7 +60,7 @@ h2, h3 {
     justify-content: center; 
 }
 
-a {
+.form {
     font-size: 20px;
     text-decoration: bold;
     color: whitesmoke;
@@ -82,14 +82,9 @@ a {
         font-size: 24px;
         text-decoration: underline;}
 
-picture {
+.showpic {
     display: flex;
-    justify-content: center;
-    align-items:center;
     flex-direction: column;
-    padding: 100px;
-    border-style: solid;
-    border-width: thick;
-    border-color:black;
-    float: right;
+    max-width: 400px;
+    max-height: 400px;
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 class TVshow extends Component {
@@ -6,9 +6,9 @@ class TVshow extends Component {
 
     static propTypes = {
         name: PropTypes.string.isRequired,
-        deleteHandler: PropTypes.func,
         allowDelete: PropTypes.bool,
         selectHandler: PropTypes.func.isRequired,
+        deleteHandler: PropTypes.func,
     }
 
     renderDelete = () => {
@@ -23,10 +23,10 @@ class TVshow extends Component {
 
     render = () => {
         return (
-            <div>
+            <Fragment>
+                <button onClick={this.props.selectHandler}>{this.props.name}</button>
                 {this.renderDelete()}
-                <button onClick={this.props.selectHandler}>Select{this.props.name}</button>
-            </div>
+            </Fragment>
         )
     }
 }
