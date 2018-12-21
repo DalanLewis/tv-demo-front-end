@@ -22,10 +22,13 @@ class TVshow extends Component {
     
 
     render = () => {
+        console.log(this.props.name)
         return (
             <Fragment>
+                <div>
                 <button onClick={this.props.selectHandler}>{this.props.name}</button>
                 {this.renderDelete()}
+                </div>
             </Fragment>
         )
     }

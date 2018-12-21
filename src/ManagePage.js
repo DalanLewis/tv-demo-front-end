@@ -10,6 +10,7 @@ class ManagePage extends Component {
         show: PropTypes.object.isRequired,
         tvShowDeleted: PropTypes.func.isRequired,
         saveTvShow: PropTypes.func.isRequired,
+        tvShows: PropTypes.array.isRequired
 
     }
 
@@ -35,12 +36,13 @@ class ManagePage extends Component {
     }
 
     renderShows = () => {
-        if (this.props.show.name) {
-            return (
-                    <TVshow allowDelete={true} deleteHandler={this.tvShowDeleted} selectHandler={this.tvShowSelected} name={this.props.show.name} />
-            )
-
+        let theTvShows = []
+        if (this.props.tvShows){
+            for (let i = 0; i < this.props.tvShows.length; i++) {
+                theTvShows = [...theTvShows, (<TVshow allowDelete={true} deleteHandler={this.tvShowDeleted} selectHandler={this.tvShowSelected} name={this.props.tvShows[i].name} />)]
+            }
         }
+        return theTvShows
     }
 
     tvShowSelected = () => {
