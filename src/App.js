@@ -26,18 +26,18 @@ class App extends Component {
                     rating: '',
                     image: ''
                 }
-            })
+            }
+            )
         )
     }
 
     saveTvShow = (a) => {
-        console.log(a)
         this.setState((prevState) => {
             return {
                 tvShows: [...prevState.tvShows, {
                     name: a.name,
                     rating: a.rating,
-                    image: a.image
+                    image: a.image,
                 }]
             }
         }
@@ -52,12 +52,11 @@ class App extends Component {
 
     renderPreviewPage = () => {
         return (
-            <PreviewPage show={this.state.show} />
+            <PreviewPage show={this.state.tvShows} />
         )
     }
 
     render = () => {
-        console.log(this.state)
         return (
             <Router>
                 <Switch>
