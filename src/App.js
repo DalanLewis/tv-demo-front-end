@@ -36,7 +36,7 @@ class App extends Component {
             return {
                 tvShows: [...prevState.tvShows, {
                     name: a.name,
-                    rating: a.rating,
+                    rating: Number(a.rating),
                     image: a.image,
                 }]
             }
@@ -52,7 +52,7 @@ class App extends Component {
 
     renderPreviewPage = () => {
         return (
-            <PreviewPage show={this.state.tvShows} />
+            <PreviewPage tvShows={this.state.tvShows} />
         )
     }
 

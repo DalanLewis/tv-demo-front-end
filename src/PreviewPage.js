@@ -8,7 +8,8 @@ import PropTypes from 'prop-types'
 class PreviewPage extends Component {
 
     static propTypes = {
-        show: PropTypes.object.isRequired,
+        // show: PropTypes.object.isRequired,
+        tvShows: PropTypes.array.isRequired
     }
 
     state = {
@@ -19,22 +20,50 @@ class PreviewPage extends Component {
         }
     }
 
-    tvShowSelected = (a) => {
-        console.log(a)
+    tvShowSelected = () => {
         this.setState({
             selectedShow: {
-                name: this.props.show.name,
-                rating: this.props.show.rating,
-                image: this.props.show.image
+                name: this.props.tvShows.name,
+                rating: this.props.tvShows.rating,
+                image: this.props.tvShows.image
             }
         })
     }
 
-    renderShows = () => {
-        if (this.props.show.name)
-        return (
-            <TVshow name={this.props.show.name} selectHandler={this.tvShowSelected} />
+    calculateAvgRating = () => {
+        return this.props.tvShows.reduce((acc, cur) => {
+            return acc + cur.rating / this.props.tvShows.length
+        }, 0
         )
+    }
+    // if (this.props.tvShows){
+    //     let sum = this.props.tvShows
+    //         .reduce((a, c) => (a.rating || a) + c.rating)
+
+    // let avg = sum / this.props.tvShows.length
+    // console.log(this.props.tvShows.length)
+
+    //   const reducer = (accumulator, currentValue) => currentValue.rating + accumulator.rating
+    //  console.log(this.tvShows.reduce(reducer))
+
+
+    testing = () => {
+
+    }
+
+    renderShows = () => {
+        if (this.props.tvShows) {
+            return this.props.tvShows
+                .filter((tvShow) => {
+                    return tvShow.rating < 4
+                })
+                .map(
+                    (tvShow) => (
+                        <TVshow name={tvShow.name} key={tvShow.name} selectHandler={this.tvShowSelected} />
+                    )
+                )
+
+        }
     }
 
     render = () => {
@@ -47,12 +76,14 @@ class PreviewPage extends Component {
                     </header>
                 </section>
                 <article>
-                <aside>
-                    <nav>
-                        <h2>Shows</h2>
-                       <ul> {this.renderShows()} </ul>
-                    </nav>
-                </aside>
+                    <aside>
+                        <nav>
+                            <h2>Shows</h2>
+                            <ul> {this.renderShows()}
+                                {this.calculateAvgRating()}
+                            </ul>
+                        </nav>
+                    </aside>
                     <div>
                         <span>
                             <b><u>{this.state.selectedShow.name}</u> <u>{this.state.selectedShow.rating}</u></b>

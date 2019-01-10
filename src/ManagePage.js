@@ -15,14 +15,13 @@ class ManagePage extends Component {
     }
 
     state = {
-        nameInProgress: 'Game of Thrones',
-        ratingInProgress: '10/10',
+        nameInProgress: 'Shitty Show',
+        ratingInProgress: 3,
         imageInProgress: 'https://www.hbo.com/content/dam/hbodata/series/game-of-thrones/episodes/1/game-of-thrones-1-1920x1080.jpg/_jcr_content/renditions/cq5dam.web.1200.675.jpeg',
     }
 
 
     nameInProgress = (e) => {
-
         this.setState({ nameInProgress: e.target.value })
     }
 
@@ -48,9 +47,9 @@ class ManagePage extends Component {
     tvShowSelected = () => {
         return (
             this.setState({
-                nameInProgress: this.props.show.name,
-                ratingInProgress: this.props.show.rating,
-                imageInProgress: this.props.show.image
+                nameInProgress: this.props.tvShows.name,
+                ratingInProgress: this.props.tvShows.rating,
+                imageInProgress: this.props.tvShows.image
             })
         )
     }
@@ -72,7 +71,7 @@ class ManagePage extends Component {
 
         this.setState({
             nameInProgress: '',
-            ratingInProgress: '',
+            ratingInProgress: 0,
             imageInProgress: '',
         })
     }
