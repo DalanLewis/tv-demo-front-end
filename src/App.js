@@ -31,17 +31,30 @@ class App extends Component {
         )
     }
 
-    saveTvShow = (a) => {
-        this.setState((prevState) => {
-            return {
-                tvShows: [...prevState.tvShows, {
-                    name: a.name,
-                    rating: Number(a.rating),
-                    image: a.image,
-                }]
-            }
-        }
-        )
+    saveTvShow = (a) => { 
+        fetch('http://localhost:4000/shows', {
+        method: 'post',
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        },
+        body: JSON.stringify(a)
+        })
+        .then(response => response.json())
+        .then((response)=>{
+            console.log(response)
+            return response
+        })
+        .catch()
+        // this.setState((prevState) => { 
+        //     return {
+        //         tvShows: [...prevState.tvShows, {
+        //             name: a.name,
+        //             rating: Number(a.rating),
+        //             image: a.image,
+        //         }]
+        //     }
+        // }
+        // )
     }
 
     renderManagePage = () => {

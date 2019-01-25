@@ -36,16 +36,6 @@ class PreviewPage extends Component {
         }, 0
         )
     }
-    // if (this.props.tvShows){
-    //     let sum = this.props.tvShows
-    //         .reduce((a, c) => (a.rating || a) + c.rating)
-
-    // let avg = sum / this.props.tvShows.length
-    // console.log(this.props.tvShows.length)
-
-    //   const reducer = (accumulator, currentValue) => currentValue.rating + accumulator.rating
-    //  console.log(this.tvShows.reduce(reducer))
-
 
     testing = () => {
 
