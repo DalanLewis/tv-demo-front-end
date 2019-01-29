@@ -31,20 +31,22 @@ class App extends Component {
         )
     }
 
-    saveTvShow = (a) => { 
-        fetch('http://localhost:4000/shows', {
-        method: 'post',
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        },
-        body: JSON.stringify(a)
-        })
-        .then(response => response.json())
-        .then((response)=>{
-            console.log(response)
-            return response
-        })
-        .catch()
+    // saveTvShow = (a) => { 
+    //     fetch('http://localhost:4000/shows', {
+    //     method: 'post',
+    //     headers: {
+    //         "Content-type": "application/json; charset=UTF-8"
+    //     },
+    //     body: JSON.stringify(a)
+    //     })
+    //     .then(response => response.json())
+    //     .then((response)=>{
+    //         console.log(response)
+    //         return response
+    //     })
+    //     .catch()
+
+
         // this.setState((prevState) => { 
         //     return {
         //         tvShows: [...prevState.tvShows, {
@@ -54,12 +56,12 @@ class App extends Component {
         //         }]
         //     }
         // }
-        // )
-    }
+    //     // )
+    // }
 
     renderManagePage = () => {
         return (
-            <ManagePage tvShows={this.state.tvShows} show={this.state.show} saveTvShow={this.saveTvShow} tvShowDeleted={this.tvShowDeleted} />
+            <ManagePage />
         )
     }
 
