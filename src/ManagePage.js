@@ -16,43 +16,55 @@ class ManagePage extends Component {
 
     state = {
         shows: {
-        nameInProgress: 'Shitty Show',
-        ratingInProgress: 3,
-        imageInProgress: 'https://www.hbo.com/content/dam/hbodata/series/game-of-thrones/episodes/1/game-of-thrones-1-1920x1080.jpg/_jcr_content/renditions/cq5dam.web.1200.675.jpeg',
-    },
+            nameInProgress: '',
+            ratingInProgress: '',
+            imageInProgress: '',
+        },
         tvShows: []
     }
 
 
     nameInProgress = (e) => {
-        this.setState({ shows:{nameInProgress: e.target.value} })
+        this.setState({
+            shows: {
+                nameInProgress: e.target.value,
+                ratingInProgress: this.state.shows.ratingInProgress,
+                imageInProgress: this.state.shows.imageInProgress
+            }
+        }
+        )
     }
 
     ratingInProgress = (e) => {
-        this.setState({ shows:{ratingInProgress: e.target.value} })
+        this.setState({ shows: { 
+            nameInProgress: this.state.shows.nameInProgress,
+            ratingInProgress: e.target.value,
+            imageInProgress: this.state.shows.imageInProgress
+        }}
+        )
     }
 
     imageInProgress = (e) => {
-        this.setState({ shows:{imageInProgress: e.target.value} })
+        this.setState({ shows: { 
+            nameInProgress: this.state.shows.nameInProgress,
+            ratingInProgress: this.state.shows.ratingInProgress,
+            imageInProgress: e.target.value 
+        }}
+        )
 
     }
 
-    componentDidMount = (a) => {
-        fetch('http://localhost:4000/shows', {
-            method: 'get',
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            },
-            body: JSON.stringify(a)
-            })
-            .then(response => response.json())
-            .then((show)=> {
-                console.log(show)
-                this.setState({tvShows: show})
-            })
-            .catch()
+    componentDidMount = async (a) => {
+        try {
+            const res = await fetch('http://localhost:4000/shows')
+            const tvShows = await res.json()
+            this.setState({ tvShows }
+            )
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
-
 
     renderShows = () => {
         if (this.state.tvShows) {
@@ -64,15 +76,15 @@ class ManagePage extends Component {
         }
     }
 
-    // tvShowSelected = () => {
-    //     return (
-    //         this.setState({
-    //             nameInProgress: this.props.tvShows.name,
-    //             ratingInProgress: this.props.tvShows.rating,
-    //             imageInProgress: this.props.tvShows.image
-    //         })
-    //     )
-    // }
+    tvShowSelected = () => {
+        // return (
+        //     this.setState({
+        //         nameInProgress: this.props.tvShows.name,
+        //         ratingInProgress: this.props.tvShows.rating,
+        //         imageInProgress: this.props.tvShows.image
+        //     })
+        // )
+    }
 
     // tvShowDeleted = () => {
     //     // return (
@@ -81,39 +93,47 @@ class ManagePage extends Component {
     // }
 
 
-    saveTvShow = (e) => { 
-        e.preventDefault ()
-        fetch('http://localhost:4000/shows', {
-        method: 'post',
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        },
-        body: JSON.stringify(this.state.shows)
-        })
-        .then(response => response.json())
-        .then((response)=>{
+    saveTvShow = async (e) => {
+        e.preventDefault()
+        try {
+            await fetch('http://localhost:4000/shows', {
+                method: 'post',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(this.state.shows)
+            })
+            console.log(this.state.shows)
             this.componentDidMount()
-            return response
-        })
-        .catch()
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+
+    // this.setState({
+    //     shows: {
+    //         nameInProgress: '',
+    //         ratingInProgress: 0,
+    //         imageInProgress: '',
+    //     }
+    // })
+
 
 
 
     // saveTvShow = (e) => {
     //     e.preventDefault()
-        // this.props.saveTvShow(
-        //     {
-        //         name: this.state.nameInProgress,
-        //         rating: this.state.ratingInProgress,
-        //         image: this.state.imageInProgress
-        //     })
+    // this.props.saveTvShow(
+    //     {
+    //         name: this.state.nameInProgress,
+    //         rating: this.state.ratingInProgress,
+    //         image: this.state.imageInProgress
+    //     })
 
-        this.setState({
-            nameInProgress: '',
-            ratingInProgress: 0,
-            imageInProgress: '',
-        })
-    }
+
+
 
     render = () => {
         return (
