@@ -36,22 +36,25 @@ class ManagePage extends Component {
     }
 
     ratingInProgress = (e) => {
-        this.setState({ shows: { 
-            nameInProgress: this.state.shows.nameInProgress,
-            ratingInProgress: e.target.value,
-            imageInProgress: this.state.shows.imageInProgress
-        }}
+        this.setState({
+            shows: {
+                nameInProgress: this.state.shows.nameInProgress,
+                ratingInProgress: e.target.value,
+                imageInProgress: this.state.shows.imageInProgress
+            }
+        }
         )
     }
 
     imageInProgress = (e) => {
-        this.setState({ shows: { 
-            nameInProgress: this.state.shows.nameInProgress,
-            ratingInProgress: this.state.shows.ratingInProgress,
-            imageInProgress: e.target.value 
-        }}
+        this.setState({
+            shows: {
+                nameInProgress: this.state.shows.nameInProgress,
+                ratingInProgress: this.state.shows.ratingInProgress,
+                imageInProgress: e.target.value
+            }
+        }
         )
-
     }
 
     componentDidMount = async (a) => {
